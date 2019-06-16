@@ -1,0 +1,143 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New users</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                     <th>Id</th>
+                    
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Phone Number</th>
+                     <th>Mobile Number</th>
+                     <th>User Name</th>
+                     <th>Address</th>
+                     <th>Action</th>
+                    </thead>
+                  <tbody>
+                    <tr *ngFor=" let user of users">
+                      <td>{{user.id}}</td>
+                       
+                      <td>{{user.first_name}}</td>
+                      <td>{{user.last_name}}</td>
+                      <td>{{user.phone_number}}</td>
+                      <td>{{user.mobile_number}}</td>
+                      <td>{{user.user_name}}</td>
+                      <td>{{user.address}}</td>
+                      <td>
+                        <a  (click)="onEdit(user)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+      
+                        <!-- <button type="button" (click)="deleteUser(user.id)" class="btn btn-raised btn-danger ml-2">Delete</button> -->
+                        <a (click)="deleteUser(user.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form  #userForm="ngForm"  (ngSubmit)="onSubmit(userForm)" >
+                     <input type="hidden" name="id"  [(ngModel)]="user.id" #id="ngModel"> 
+                   
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Fist Name</label>
+                        <input type="text" #name="ngModel" class="form-control" name="first_name" [(ngModel)]="user.first_name" id="id_first_name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Last Name</label>
+                        <input type="text" #name="ngModel" class="form-control" name="last_name" [(ngModel)]="user.last_name" id="id_last_name">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Phone Number</label>
+                        <input type="number" #name="ngModel" class="form-control" name="phone_number" [(ngModel)]="user.phone_number" id="id_phone_number">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Mobile Number</label>
+                        <input type="number" #name="ngModel" class="form-control" name="mobile_number" [(ngModel)]="user.mobile_number" id="id_mobile_number">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">User Name</label>
+                        <input type="text" #name="ngModel" class="form-control" name="user_name" [(ngModel)]="user.user_name" id="id_user_name">
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Address</label>
+                        <input type="text" #name="ngModel" class="form-control" name="address" [(ngModel)]="user.address" id="id_address">
+                      </div>
+                    </div>
+                  </div>
+
+                   
+
+                  <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                  <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                  <div class="clearfix"></div>
+                </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

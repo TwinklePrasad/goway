@@ -1,0 +1,124 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New car</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>Id</th>
+                     <th>Title</th>  
+                    <th>Image</th>
+                      
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let car of carss">
+                       <td>{{car.id}}</td>  
+                      <td>{{car.title}}</td>  
+                       
+                      <td><img src="http://localhost:3000/car/{{car.address}}" width=50 height=50 /></td>
+
+                       
+                      <td>
+                        <a (click)="onEdit(car)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+
+                         
+                        <a (click)=" deleteCar(car.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form #carForm="ngForm" (ngSubmit)="onSubmit(carForm)" >
+                    <input type="hidden" name="id" [(ngModel)]="car.id" #id="ngModel">
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Title</label>
+                          <input type="text" #name="ngModel" class="form-control" name="title" [(ngModel)]="car.title"
+                            id="id_title">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+ 
+                      <div class="form-group"> 
+                        <div class="form-group form-file-upload form-file-multiple bmd-form-group">
+                                <input type="file" name="myFile" accept="image/*" (change)="onFileChanged($event, imageLabel, fileIn)"  id="id_myFile" class="inputFileHidden" #fileIn  #name="ngModel" [(ngModel)]="car.address">
+                                <div class="input-group">
+                                    <input type="text" class="form-control inputFileVisible" #imageLabel  placeholder="Choose Vehicles">
+                                    <span class="input-group-btn">
+                                        <button type="button" (click)="selectImage(fileIn)" class="btn btn-fab btn-round btn-primary btn-image">
+                                            <i class="material-icons">attach_file</i>
+                                        </button>
+                                    </span>
+                                </div>
+                              </div>
+                    </div>  
+ 
+
+                      </div>
+
+                         
+                    </div>
+
+                    <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New
+                complaint-type</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Importance</th>
+                    <th>Sender_Type</th>
+                    <th>Action</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let complaint_type of complaint_types">
+                      <td>{{complaint_type.id}}</td>
+                      <td>{{complaint_type.title}}</td>
+                      <td>{{complaint_type.importance}}</td>
+                      <td>{{complaint_type.sender_type}}</td>
+                      <td>
+                        <a (click)="onEdit(complaint_type)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+
+                        <!-- <button type="button" (click)="deleteUser(user.id)" class="btn btn-raised btn-danger ml-2">Delete</button> -->
+                        <a (click)="deleteComplaint(complaint_type.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form #complaint_typeForm="ngForm" (ngSubmit)="onSubmit(complaint_typeForm)">
+                    <input type="hidden" name="id" [(ngModel)]="complaint_type.id" #id="ngModel">
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Title</label>
+                          <input type="text" #name="ngModel" class="form-control" name="title" [(ngModel)]="complaint_type.title"
+                            id="id_title">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Importance</label>
+                          <select class="form-control"  data-style="btn btn-link" #name="ngModel" name="importance"
+                            [(ngModel)]="complaint_type.importance" id="id_importance">
+                            <option *ngFor="let st of importance" [value]="st">{{st}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Sender_Type</label>
+                          <select class="form-control " data-style="btn btn-link" #name="ngModel" name="sender_type"
+                            [(ngModel)]="complaint_type.sender_type" id="id_sender_type"  >
+                            <option *ngFor="let se of sender" [value]="se">{{se}}</option>
+
+                          </select>
+                        </div>
+                      </div>
+ 
+
+                    </div>
+ 
+                    <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                    <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

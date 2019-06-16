@@ -1,0 +1,63 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Call-Request</h4>
+              <p class="card-category"></p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+
+                    <th>Driver Name</th>
+                    <th>Driver Number</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let d of drs">
+                      <td>{{d.first_name +" "+d.last_name}}</td>
+                      <td>{{d.mobile_number}}</td>
+  
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Call-Request</h4>
+              <p class="card-category"></p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+ 
+                    <th>Rider Name</th>
+                    <th>Rider Number</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor=" let r of rds">
+                      
+                      <td>{{r.first_name  +" "+r.last_name}}</td>
+
+                      <td>{{r.mobile_number}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

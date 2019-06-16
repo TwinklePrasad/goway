@@ -1,0 +1,181 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New Driver</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                     <th>Id</th>
+                     <th>Status</th>
+                     <th>First Name</th>
+                     <th>Last Name</th>
+                     <th>Certificate Number</th>
+                     <th>Mobile Number</th>
+                     <th>Rating</th>
+                     <th>Car Plate</th>
+                     <th>vehicles name</th>
+                     <th>Balance</th>
+                     <th>Franchise Number</th>
+                     <th>Action</th>
+                    </thead>
+                  <tbody>
+                    <tr *ngFor=" let driver of drivers">
+                      <td>{{driver.id}}</td>
+                      <td>{{driver.status}}</td>
+                      <td>{{driver.first_name}}</td>
+                      <td>{{driver.last_name}}</td>
+                      <td>{{driver.certificate_number}}</td>
+                      <td>{{driver.mobile_number}}</td>
+                      <td>{{driver.rating}}</td>
+                      <td>{{driver.car_plate}}</td>
+                      <td>{{driver.title}}</td>
+                      <td>{{driver.balance}}</td>
+                      <td>{{driver.user_name}}</td>
+                      <td>
+                        <a  (click)="onEdit(driver)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+        
+                        <a (click)="deleteDriver(driver.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                    </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form  #driverForm="ngForm"  (ngSubmit)="onSubmit(driverForm)" >
+                    <input type="hidden" name="id"  [(ngModel)]="driver.id" #id="ngModel"> 
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Fist Name</label>
+                          <input type="text" #name="ngModel" class="form-control" name="first_name" [(ngModel)]="driver.first_name" id="id_first_name">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Last Name</label>
+                          <input type="text" #name="ngModel" class="form-control" name="last_name" [(ngModel)]="driver.last_name" id="id_last_name">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Status</label>
+                          <input type="text" #name="ngModel" class="form-control" name="status" [(ngModel)]="driver.status" id="id_status">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Balance</label>
+                          <input type="number" #name="ngModel" class="form-control" name="balance" [(ngModel)]="driver.balance" id="id_balance">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Certificate Number</label>
+                          <input type="text" #name="ngModel" class="form-control" name="certificate_number" [(ngModel)]="driver.certificate_number" id="id_certificate_number">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Mobile Number</label>
+                          <input type="number" #name="ngModel" class="form-control" name="mobile_number" [(ngModel)]="driver.mobile_number" id="id_mobile_number">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Rating</label>
+                          <input type="number" #name="ngModel" class="form-control" name="rating" [(ngModel)]="driver.rating" id="id_rating">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Car Plate</label>
+                          <input type="text" #name="ngModel" class="form-control" name="car_plate" [(ngModel)]="driver.car_plate" id="id_car_plate">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Choose Vehicle</label>
+                          <select class="form-control"  data-style="btn btn-link" #name="ngModel" name="car_id" [(ngModel)]="driver.car_id" id="id_car_id">
+                            <option *ngFor="let car of carss" [value]="car.id">{{car.title}}</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="bmd-label-floating">Franchise Number</label>
+                          <select class="form-control "  data-style="btn btn-link" #name="ngModel" name="operator_id" [(ngModel)]="driver.operator_id" id="id_operator_id">
+                             
+                            <option *ngFor="let user of users" [value]="user.id">{{user.user_name}}</option>
+                            
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                    <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+ 
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

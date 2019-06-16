@@ -1,0 +1,116 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New promotion</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                     <th>Id</th>
+                     <th>Title</th>
+                     <th>Start At</th>
+                     <th>Expiration At</th>
+                      <th>Action</th>
+                    </thead>
+                  <tbody>
+                    <tr *ngFor=" let promotion of promotions">
+                      <td>{{promotion.id}}</td>
+                      <td>{{promotion.title}}</td>
+                      <td>{{promotion.start_timestamp}}</td>
+                      <td>{{promotion.expiration_timestamp}}</td>
+                    <td>
+                      <a  (click)="onEdit(promotion)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+    
+                      <!-- <button type="button" (click)="deleteUser(user.id)" class="btn btn-raised btn-danger ml-2">Delete</button> -->
+                      <a (click)="deletePromotion(promotion.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                  </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form  #promotionForm="ngForm"  (ngSubmit)="onSubmit(promotionForm)" >
+                    <input type="hidden" name="id"  [(ngModel)]="promotion.id" #id="ngModel"> 
+                  
+                 <div class="row">
+                   <div class="col-md-12">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Title</label>
+                       <input type="text" #name="ngModel" class="form-control" name="title" [(ngModel)]="promotion.title" id="id_title">
+                     </div>
+                   </div>
+                  </div>
+                   <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Start At</label>
+                       <input type="number" #name="ngModel" class="form-control" name="start_timestamp" [(ngModel)]="promotion.start_timestamp" id="id_start_timestamp">
+                     </div>
+                   </div>
+                
+                 
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Expiration At</label>
+                       <input type="number" #name="ngModel" class="form-control" name="expiration_timestamp" [(ngModel)]="promotion.expiration_timestamp" id="id_expiration_timestamp">
+                     </div>
+                   </div>
+                  </div>
+                
+                 
+                 <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                 <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                 <div class="clearfix"></div>
+               </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>

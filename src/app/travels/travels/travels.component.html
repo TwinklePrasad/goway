@@ -1,0 +1,135 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New travel</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                     <th>Id</th>
+                     <th>Status</th>
+                     <th>Pickup Address</th>
+                     <th>destination Address</th>
+                     <th>Rating</th>
+                     <th>Request  Time</th>
+                      <th>Action</th>
+                    </thead>
+                  <tbody>
+                    <tr *ngFor=" let travel of travels">
+                      <td>{{travel.id}}</td>
+                      <td>{{travel.status}}</td>
+                      <td>{{travel.pickup_address}}</td>
+                      <td>{{travel.destination_address}}</td>
+                      <td>{{travel.rating}}</td>
+                      <td>{{travel.request_time}}</td>
+                      
+                    <td>
+                      <a  (click)="onEdit(travel)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+    
+                      <!-- <button type="button" (click)="deleteUser(user.id)" class="btn btn-raised btn-danger ml-2">Delete</button> -->
+                      <a (click)="deleteTravel(travel.id)" class="ml-4"><i class="material-icons">delete</i></a>
+                  </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form  #travelForm="ngForm"  (ngSubmit)="onSubmit(travelForm)" >
+                    <input type="hidden" name="id"  [(ngModel)]="travel.id" #id="ngModel"> 
+                  
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Status</label>
+                       <input type="number" #name="ngModel" class="form-control" name="status" [(ngModel)]="travel.status" id="id_status">
+                     </div>
+                   </div>
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Pickup Address</label>
+                       <input type="text" #name="ngModel" class="form-control" name="pickup_address" [(ngModel)]="travel.pickup_address" id="id_pickup_address">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Destination Address</label>
+                       <input type="text" #name="ngModel" class="form-control" name="destination_address" [(ngModel)]="travel.destination_address" id="id_destination_address">
+                     </div>
+                   </div>
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Rating</label>
+                       <input type="number" #name="ngModel" class="form-control" name="rating" [(ngModel)]="travel.rating" id="id_rating">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-12">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Request Time</label>
+                       <input type="number" #name="ngModel" class="form-control" name="request_time" [(ngModel)]="travel.request_time" id="id_request_time">
+                     </div>
+                   </div>
+                   
+                 </div>
+
+                  
+
+                 <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                 <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                 <div class="clearfix"></div>
+               </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
