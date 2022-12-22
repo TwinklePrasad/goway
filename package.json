@@ -23,7 +23,7 @@
     "angular-local-storage": "^0.7.1",
     "bootstrap-select": "^1.13.10",
     "core-js": "^2.5.4",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "ng-pick-datetime": "^7.0.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
